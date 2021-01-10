@@ -26,15 +26,15 @@ SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY', '#gwy!)h)lc0g(-g$5*_0e+pab5@on(#g
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = bool(os.environ.get("DEBUG",False))
-DEBUG = False
+#DEBUG = True
 
 
-#DEBUG=os.environ.get('DJANGO_DEBUG', '') !='False'
+DEBUG=os.environ.get('DJANGO_DEBUG', '') !='False'
 #ALLOWED_HOSTS = ['localhost','127.0.0.1','https://ankiwebmytodo.herokuapp.com/']
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['0.0.0.0','localhost','ankiwebmytodo.herokuapp.com']
-
+"""
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -67,8 +67,9 @@ LOGGING = {
         }
     }
 }
-DEBUG_PROPAGATE_EXCEPTIONS = True
-COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+"""
+#DEBUG_PROPAGATE_EXCEPTIONS = True
+#COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 # Application definition
 
 INSTALLED_APPS = [
