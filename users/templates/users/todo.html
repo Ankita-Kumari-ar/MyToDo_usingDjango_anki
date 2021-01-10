@@ -1,0 +1,68 @@
+{% extends 'users/layout.html' %}
+{% load static %}
+{% block head %}
+    <link href="{% static '/css/todo.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <header>
+        <h1 class="heading">MyToDo</h1>
+        <p style="text-align: left; font-size: larger;font-weight: bold;">
+            Welcome {{user.username}}
+            <span style="float: right;color: black;">{{date}}</span>
+        </p>
+    <nav>
+        <ul>
+            <li><a href="{% url 'viewdone'%}">ViewDoneToDo</a></li>
+            <li><a href="{% url 'logout'%}">Logout</a></li>
+        </ul>
+    </nav>
+    </header>
+    <div class="todolist" align="center">
+        <div class="takeinput" style="padding-top: 10px; margin-top: 15px;">
+        <p style="font-family: cursive;font-size: large;">Add Todo</p>
+        <form method="POST" id="form">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="OK"style="border-radius:10px;">
+        </form>
+        </div>
+        <h1 id="todoheading" style="color:#306754;font-size:35px;margin-top:60px;">To Do List</h1>
+        <table frame=void rules=rows>
+            {% for todo in todo %}
+            <tr>
+                <tr>
+                    <th>To Do</th>
+                    <th>Date Of Creation</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <td style="white-space:pre-line; line-break:break-all">{{todo.text}}</td>
+                <td>{{ todo.date_inserted }}</td>
+                <td>
+                    <form action="{% url 'delete' todo.id %}" method='post'>
+                        {% csrf_token %}
+                    <button type="submit" class="bt">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{% url 'update' todo.id %}" method='post'>
+                        {% csrf_token %}
+                        <input type="text" placeholder="type here" name="text">
+                        <button type="submit"class="bt">Update</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{% url 'done' todo.id %}" method='post'>
+                        {% csrf_token %}
+                    <button type="submit" class="bt">Done</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty%}
+            <li>Empty</li>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

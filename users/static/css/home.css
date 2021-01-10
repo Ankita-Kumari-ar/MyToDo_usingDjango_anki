@@ -1,0 +1,71 @@
+
+body {
+    background-color: thistle;
+    padding-top:3px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+header{
+    
+    padding-top:3px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: #4E8975;
+}
+
+h1.heading{
+    font-size:60px;
+    text-align: center;
+    
+    font-style: oblique;
+    text-decoration: underline;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+img{
+    width: 650px;
+    height: 550px;
+}
+.box{
+    float:left;
+    width: 650px;
+    height: 550px;
+    background-color: white;
+}
+.loginpage{
+    float:right;
+    
+    align-items: center;
+    width: 550px;
+    height: 545px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+.lp{
+    
+    padding-top: 30px;
+    padding-right: 85px;
+    padding-bottom: 50px;
+    padding-left: 121px;
+
+}
+.signupinput{
+    padding: 10px;
+    margin:10px 0; 
+    
+    border: 4px solid rgb(170, 103, 103);
+    box-shadow:0 0 15px 4px rgba(184, 121, 121, 0.06);
+    border-radius:10px;
+}
+#sign{
+    font-size: larger;
+    font-family: cursive;
+}
+#log{
+   
+    font-size: xx-large;
+    font-style: inherit;
+    font-family: cursive;
+  
+}

@@ -1,0 +1,40 @@
+{% extends 'users/layout.html' %}
+{% load static %}
+{% block head %}
+    <link href="{% static '/css/donetodo.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<header>
+    <h1 class="heading">MyToDo</h1>
+    <p style="text-align: left; font-size: larger;font-weight: bold;">
+        Welcome {{user.username}}
+        <span style="float: right;color: black;">{{date}}</span>
+    </p>
+<nav>
+    <ul>
+        <li><a href="{% url 'todo'%}">CreateToDo</a></li>
+        <li><a href="{% url 'logout'%}">Logout</a></li>
+    </ul>
+</nav>
+</header>
+    <div class="donetodo" align="center">
+        <h1 id="todoheading" style="color:#306754;font-size:35px;margin-top:60px;">Done To Do List</h1>
+        <table frame=void rules=rows>
+            {% for done in donetodo %}
+            <tr>
+                <th>To Do</th>
+                <th>Date Of Creation</th>
+                <th>Date Of Completion</th>
+                <th>Duration</th>
+            </tr>
+            <tr>
+                <td white-space:pre-line; line-break:break-all">{{ done.text }}</td>
+                <td>{{ done.start_date}}</td>
+                <td>{{ done.finished_date }}</td>
+                <td>{{ done.difference }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

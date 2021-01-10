@@ -1,0 +1,39 @@
+{% extends 'users/layout.html' %}
+{% load static %}
+{% block head %}
+    <link href="{% static '/css/signup.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+    <header>
+        <h1 class="heading">SignUp</h1>
+        <h2 align="right">{{date}}</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index'%}">Home</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <div class="signup">
+        <form method="POST">
+            {% csrf_token %}
+            <table align="center">
+            {% for field in form %}
+                <tr>
+                <td align="right">{{ field.label_tag }}</td>
+                <td>{{field}}</td>
+                <td align="left">
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error}}</p>
+                {% endfor %}
+            </td>
+            {% endfor %}
+        </tr>
+        </table>
+            <button type="submit" id="bt">OK</button>
+        </form>
+    </div>
+
+{% endblock %}

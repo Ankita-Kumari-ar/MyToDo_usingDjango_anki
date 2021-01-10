@@ -1,0 +1,33 @@
+{% extends 'users/layout.html' %}
+{% load static %}
+{% block head %}
+    <link href="{% static '/css/home.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <header>
+        <h1 class="heading">MyToDo</h1>
+        <h2 align="right" style="color:rgb(25, 26, 26)">{{date}}</h2>
+    </header>
+    <div class="box">
+        <img src="{% static 'images/bgimage.jpg' %}" alt="">
+    </div>
+    <div class="loginpage">
+        <div class="lp" align="center">
+        <p id="log" style=" color:#8C001A">LOGIN</p>
+        <p style=" color:red">{% if message %}
+         {{ message }}</p>
+        {% endif %}
+        
+        <form action={% url 'login' %} method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" size="33" class="signupinput">
+            <br>
+            <input type="password" name="password" placeholder="Password" size="33" class="signupinput">
+            <br>
+            <input type="submit" value="OK" style="background-color: rgb(156, 227, 240);">
+        </form>
+        <p id="sign">Create Account: <a href="{% url 'signup' %}">Signup</a></p>
+    </div>
+    </div>
+    
+{% endblock %}
