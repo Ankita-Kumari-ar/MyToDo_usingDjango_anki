@@ -21,12 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#gwy!)h)lc0g(-g$5*_0e+pab5@on(#g4lixihq0q8_-)m-8(_'
+#SECRET_KEY = '#gwy!)h)lc0g(-g$5*_0e+pab5@on(#g4lixihq0q8_-)m-8(_'
+SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY', '#gwy!)h)lc0g(-g$5*_0e+pab5@on(#g4lixihq0q8_-)m-8(_')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#DEBUG = bool(os.environ.get("DEBUG",False))
 #DEBUG = True
 
+
+DEBUG=os.environ.get('DJANGO_DEBUG', '') !='False'
 #ALLOWED_HOSTS = ['localhost','127.0.0.1','https://ankiwebmytodo.herokuapp.com/']
 #ALLOWED_HOSTS = []
 #ALLOWED_HOSTS = ['*']
@@ -112,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
