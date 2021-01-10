@@ -32,7 +32,7 @@ DEBUG = bool(os.environ.get("DEBUG",False))
 #DEBUG=os.environ.get('DJANGO_DEBUG', '') !='False'
 #ALLOWED_HOSTS = ['localhost','127.0.0.1','https://ankiwebmytodo.herokuapp.com/']
 #ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['0.0.0.0','localhost','ankiwebmytodo.herokuapp.com']
 
 LOGGING = {
