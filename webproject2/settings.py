@@ -27,7 +27,7 @@ SECRET_KEY = '#gwy!)h)lc0g(-g$5*_0e+pab5@on(#g4lixihq0q8_-)m-8(_'
 DEBUG = False
 #DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','https://ankiwebmytodo.herokuapp.com/']
 #ALLOWED_HOSTS = []
 
 
