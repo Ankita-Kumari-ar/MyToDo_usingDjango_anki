@@ -15,47 +15,8 @@ def index(request):
     return render(request,"users/home.html",{
         "date":date
     })
-"""
 
 
-def todo(request):
-    if request.user.is_authenticated:
-        user=request.user
-        print(user)
-        if request.method=="POST":
-            form=NewForm(request.POST)
-            if form.is_valid():
-                form.save()
-                t=form.cleaned_data["text"]
-                todo=form.save(commit=False)
-                todo.user=user
-                todo.save()
-                tobject=Todo.objects.create(text=t,date_inserted=datetime.datetime.now())
-                #print(tobject)
-                return render(request,"users/todo.html",{
-                    "form":form,
-                    "todo":Todo.objects.all(),
-                    "date":datetime.datetime.now()
-                })
-            else:
-                return render(request,"users/todo.html",{
-                    "form":form,
-                    "todo":Todo.objects.all(),
-                    "date":datetime.datetime.now()
-                })
-        else:
-            form=NewForm()
-            
-            todo=form.save(commit=False)
-            todo.user=user
-            todo.save()
-        return render(request,"users/todo.html",{
-                "form":form,
-                "todo":Todo.objects.all(),
-                "date":datetime.datetime.now()
-            })
-
-"""
 @login_required
 def todo(request):
     if request.user.is_authenticated:
@@ -67,12 +28,6 @@ def todo(request):
             t.user=user
             t.save()
             return redirect("todo")
-            """
-            return render(request,"users/todo.html",{
-                "form":form,
-                "todo":Todo.objects.filter(user=user),
-                "date":datetime.datetime.now()
-            })"""
         else:
             form=NewForm()
         return render(request,"users/todo.html",{
@@ -89,7 +44,7 @@ def signup(request):
             user=form.save()
             username=form.cleaned_data.get('username')
             raw_password=make_password(form.cleaned_data.get('password'))
-            #user =authenticate(request, username=username, password=raw_password)
+            
             login(request, user)
             return redirect("login")
 
@@ -119,7 +74,7 @@ def login_view(request):
     return render(request,"users/home.html",{
         "date":datetime.now()
     })
-#@login_required
+
 def deletetodo(request, todo_id):
     if request.user.is_authenticated:
         user=request.user
@@ -144,13 +99,13 @@ def donetodo(request, todo_id):
         if request.method=="POST":
             t=Todo.objects.filter(user=user)
             tobject=t.get(pk=todo_id)
-            #tobject=dt.objects.get(pk=todo_id)
+            
             dtext=tobject.text
             dstart=tobject.date_inserted
             dend=datetime.now(timezone.utc)
             diff=dend-dstart
             dobject=DoneTodo.objects.create(user=user,text=dtext,start_date=dstart,finished_date=dend,difference=diff)
-            #dobject.objects.user=user
+           
             tobject.delete()
         return HttpResponseRedirect(reverse("todo"))   
 

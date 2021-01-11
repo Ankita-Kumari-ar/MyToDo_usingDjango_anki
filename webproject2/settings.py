@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import django_heroku
 from pathlib import Path
 import os
 
@@ -30,46 +29,8 @@ SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY', '#gwy!)h)lc0g(-g$5*_0e+pab5@on(#g
 
 
 DEBUG=os.environ.get('DJANGO_DEBUG', '') !='False'
-#ALLOWED_HOSTS = ['localhost','127.0.0.1','https://ankiwebmytodo.herokuapp.com/']
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['0.0.0.0','localhost','ankiwebmytodo.herokuapp.com']
-"""
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                       'pathname=%(pathname)s lineno=%(lineno)s ' +
-                       'funcname=%(funcName)s %(message)s'),
-            'datefmt': '%Y-%m-%d %H:%M:%S'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        }
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'logging.NullHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        }
-    },
-    'loggers': {
-        'testlogger': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        }
-    }
-}
-"""
-#DEBUG_PROPAGATE_EXCEPTIONS = True
-#COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+ALLOWED_HOSTS = []
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -168,6 +129,5 @@ STATICFILES_DIRS=[
 ]
 AUTHENTICATION_BACKENDS=('django.contrib.auth.backends.ModelBackend',)
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+
 
